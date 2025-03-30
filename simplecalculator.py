@@ -50,19 +50,205 @@ class Calculator:
 
                   mod = mod % nbre
             return mod
-
-
       
 
 
-calculatrice1 = Calculator(-8,-10,-16,6)
+def menu():
 
-print(calculatrice1.add())
+      print()
 
-print(calculatrice1.sous())
+      print("Calculatrice".upper().center(100))
 
-print(calculatrice1.mutl())
+      print()
 
-print(calculatrice1.div())
+      print("1. pour effectuer une opération")
+      print()
+      print("2. pour quitter la calculatrice")
+      print()
 
-print(calculatrice1.mod())
+def oper_sus(valeur:(int | float)) -> (int | float):
+
+
+                  poursuivre = ""
+
+                  while poursuivre != "=":       
+
+                              print()
+
+                              opeateur = input("precisez l'operateur: (+,-,*,/,%): ")
+                              if opeateur == "":
+                                     break
+                              print()
+
+                              isnotevalue = True
+
+                              while isnotevalue:
+                                    
+                                    nombre = input("Entrez un nombre: ")
+
+                                    try:
+                                          
+                                          nombre = int(nombre)
+
+                                    except ValueError:
+
+                                          print("Erreur de conversion")
+
+                                          isnotevalue = True
+
+                                          continue
+                                    isnotevalue = False
+                              
+                              
+
+                              calculat = Calculator(valeur, nombre)
+
+                              if opeateur == "+":
+                                    
+                                    value = valeur
+
+                                    valeur = calculat.add()
+
+                                    print()
+
+                                    print(f"{value} + {nombre} = {valeur}")
+
+                                    print()
+
+                                    oper_sus(valeur)
+                              
+                              elif opeateur == "-":
+
+                                    value = valeur
+
+                                    valeur = calculat.sous()
+
+                                    print()
+
+                                    print(f"{value} - {nombre} = {valeur}")
+
+                                    print()
+                                    
+                                    oper_sus(valeur)
+                              elif opeateur == "*":
+
+                                    value = valeur
+
+                                    valeur = calculat.mutl()
+
+                                    print()
+
+                                    print(f"{value} * {nombre} = {valeur}")
+
+                                    print()
+                                    
+                                    oper_sus(valeur)
+
+                              elif opeateur == "/":
+
+                                    try:
+                                          value = valeur
+
+                                          valeur = calculat.div()
+
+                                          print()
+
+                                          print(f"{value} / {nombre} = {valeur}")
+
+                                          print()
+                                          
+                                          oper_sus(valeur)
+
+                                    except ZeroDivisionError:
+
+                                          print("Zero Division Error")
+                                          continue
+
+                        
+                              
+                              elif opeateur == "%":
+
+                                    try:
+                                          value = valeur
+
+                                          valeur = calculat.mod()
+
+                                          print()
+
+                                          print(f"{value} % {nombre} = {valeur}")
+
+                                          print()
+                                          
+                                          oper_sus(valeur)
+
+                                    except ZeroDivisionError:
+
+                                          print("Zero Division Error")
+
+                                          continue
+
+                              print()
+                                    
+                              print("cliquez sur enter pour continuer\n")
+                              poursuivre = input("entrez égale (=) pour afficher le resultart et quitter ou (q) pour quitter: ")
+                              
+                              print()
+
+                              if poursuivre == "=":
+                                          
+                                    print()
+
+                                    print("le resultat = ", valeur)
+
+                                    print()
+                                    
+                              elif poursuivre.upper() == "Q":
+                                    break
+
+
+
+continuer = True
+
+while continuer:
+
+      menu()
+
+      choix = int(input("Entrez ici, votre choix: "))
+
+      if choix == 1:
+
+                  liste_nbre = []
+
+                  print()
+
+
+                  error = True
+
+                  while error:
+                        
+                        nbre = input("Entrez un nombre: ")
+
+                        try:
+                              nbre = int(nbre)
+
+                        except ValueError:
+
+                              print("erreur de conversion")
+
+                              error = True
+
+                              continue
+
+                        error = False
+
+                  oper_sus(nbre)
+      
+      elif choix == 2:
+             
+             print()
+
+             print("Merci d'avoir utilisé notre programme!")
+
+             print()
+
+             break
