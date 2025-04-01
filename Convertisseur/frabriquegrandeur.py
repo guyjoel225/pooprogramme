@@ -26,8 +26,3 @@ def grandeur_fabrique(grandeur: str, valeur: (int| float), unite: str):
                 raise ValueError("Cette grandeur n'est pas prise en charge par ce programme")
         print("la grandeur existe")
         return grandeur_factor[grandeur](valeur,unite)
-
-
-conver = grandeur_fabrique("longueur",10,"m")
-
-print(conver.converters("km"))
