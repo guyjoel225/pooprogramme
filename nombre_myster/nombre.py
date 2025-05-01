@@ -1,6 +1,6 @@
 from random import randrange
 
-
+from utils import *
 
 
 class User:
@@ -25,8 +25,6 @@ class NombreMystere(User):
 
 
             if  nombre == self.nombre_mystere:
-
-                print(f"Bravo, vous avez trouvé le nombre mystère: ({self.nombre_mystere})")
 
                 self.score = 10
 
